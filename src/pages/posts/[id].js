@@ -25,9 +25,9 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post,
-      revalidate: 10,
-    }
-  }
+    },
+    revalidate: 10,
+  };
 }
 
 // container ------------------------------------------
