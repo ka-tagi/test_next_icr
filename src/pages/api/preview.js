@@ -13,7 +13,7 @@ export const API_KEY = process.env.API_KEY;
   const url = `${API_URL}blogs/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`;
 
   const params = {
-    fields: id,
+    fields: 'id',
     draftKey: req.query.draftKey,
   }
 
