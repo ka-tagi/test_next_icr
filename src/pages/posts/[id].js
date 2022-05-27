@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { getList, getArticle } from '@/lib/api.js';
 
 // components ------------------------------------------
@@ -24,7 +25,7 @@ export async function getStaticProps(context) {
   // const isPreviewMode = preview && previewData?.post.slug;
   const propsData = JSON.stringify(context);
 
-  const isPreviewMode = context.previewData;
+  const isPreviewMode = context.preview && context.previewData;
   console.log(`isPreviewMode: ${isPreviewMode}`);
 
   let params = null;
@@ -50,6 +51,10 @@ export async function getStaticProps(context) {
 
 // container ------------------------------------------
 const Article = ({post}) => {
+  if (!post) {
+    return <div>ページデータがないよ</div>
+  }
+
   return (
     <ArticleTemplate
       post={post}
