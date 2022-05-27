@@ -22,11 +22,10 @@ export async function getStaticPaths() {
 
 // コンテンツデータ取得
 export async function getStaticProps(context) {
-  // const isPreviewMode = preview && previewData?.post.slug;
   const propsData = JSON.stringify(context);
 
   console.log(`context: ${propsData}`);
-  const isPreviewMode = context.preview && context.previewData?.post;
+  const isPreviewMode = context.preview && context.previewData?.draftKey;
   console.log(`isPreviewMode: ${isPreviewMode}`);
 
   let params = null;
