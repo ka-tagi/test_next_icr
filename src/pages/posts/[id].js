@@ -25,7 +25,7 @@ export async function getStaticProps(context) {
   const propsData = JSON.stringify(context);
 
   console.log(`context: ${propsData}`);
-  const isPreviewMode = context.preview && context.previewData?.draftKey;
+  const isPreviewMode = (context.preview && context.previewData?.draftKey) || false;
   console.log(`isPreviewMode: ${isPreviewMode}`);
 
   const id = context.params.id;
@@ -38,19 +38,20 @@ export async function getStaticProps(context) {
   }
 
   const post = await getArticle(id, params);
-  post.console = propsData;
-  post.isPreview = isPreviewMode;
+  console = propsData;
 
   return {
     props: {
       post,
+      propsData,
+      isPreviewMode,
     },
     revalidate: 10,
   };
 }
 
 // container ------------------------------------------
-const Article = ({post}) => {
+const Article = ({post, propsData, isPreviewMode}) => {
   if (!post) {
     return <div>ページデータがないよ</div>
   }
@@ -58,6 +59,8 @@ const Article = ({post}) => {
   return (
     <ArticleTemplate
       post={post}
+      console={propsData}
+      preview={isPreviewMode}
     />
   );
 };
