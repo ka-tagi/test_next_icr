@@ -8,7 +8,7 @@ const exitPreview = async (req, res) => {
   const content = await getArticle(id, params);
 
   res.clearPreviewData();
-  res.writeHead(307, { Location: content ? `/blogs/${content.id}` : "/" });
+  res.writeHead(307, { Location: content ? `/posts/${content.id}` : "/" });
   res.end();
 };
 
