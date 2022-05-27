@@ -13,7 +13,7 @@ export const API_KEY = process.env.API_KEY;
   const previewRes = await fetch(url,
     { headers: { 'X-MICROCMS-API-KEY': API_KEY } }
   );
-  const content = previewRes.json();
+  const content = await previewRes.json();
 
   if (!content) {
     return res.status(401).json({ message: 'Invalid slug' });
