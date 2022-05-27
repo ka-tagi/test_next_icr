@@ -28,14 +28,13 @@ export async function getStaticProps(context) {
   const isPreviewMode = context.preview && context.previewData?.draftKey;
   console.log(`isPreviewMode: ${isPreviewMode}`);
 
+  const id = context.params.id;
   let params = null;
-  let id = context.params.id;
   if (isPreviewMode) {
     const draftKey = context.previewData?.draftKey || '';
     params = {
       draftKey,
     }
-    id = context.params.slug;
   }
 
   const post = await getArticle(id, params);
