@@ -10,8 +10,6 @@ export const API_KEY = process.env.API_KEY;
     return res.status(404).end();
   }
 
-  const url = `${API_URL}blogs/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`;
-
   const params = {
     fields: 'id',
     draftKey: req.query.draftKey,

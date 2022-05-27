@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import { getList, getArticle } from '@/lib/api.js';
 
 // components ------------------------------------------
