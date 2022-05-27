@@ -1,11 +1,11 @@
-const ArticleTemplate = ({post, console}) => {
+const ArticleTemplate = ({post}) => {
   return (
     <div>
       <h1>{post.title}</h1>
       <div
         dangerouslySetInnerHTML={{__html: post.content }}
       />
-      <div>{console}</div>
+      {post.console && <div>{post.console}</div>}
     </div>
   );
 }

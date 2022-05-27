@@ -38,22 +38,21 @@ export async function getStaticProps(context) {
   }
 
   const post = await getArticle(id, params);
+  post.console = propsData;
 
   return {
     props: {
       post,
-      propsData,
     },
     revalidate: 10,
   };
 }
 
 // container ------------------------------------------
-const Article = ({post, propsData}) => {
+const Article = ({post}) => {
   return (
     <ArticleTemplate
       post={post}
-      console={propsData}
     />
   );
 };
