@@ -25,7 +25,8 @@ export async function getStaticProps(context) {
   // const isPreviewMode = preview && previewData?.post.slug;
   const propsData = JSON.stringify(context);
 
-  const isPreviewMode = context.preview && context.previewData;
+  console.log(`context: ${propsData}`);
+  const isPreviewMode = context.preview && context.previewData?.post;
   console.log(`isPreviewMode: ${isPreviewMode}`);
 
   let params = null;
