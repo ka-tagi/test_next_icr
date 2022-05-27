@@ -2,7 +2,7 @@ export const API_URL = process.env.API_URL;
 export const API_KEY = process.env.API_KEY;
 
 // preview データ取得
-export default async(req, res) => {
+ const preview = async(req, res) => {
   // req.query.slug は記事 id が渡ってくる
   if (!req.query.slug) {
     return res.status(404).end();
@@ -26,3 +26,5 @@ export default async(req, res) => {
   res.writeHead(307, { Location: `/posts/${content.id}` });
   res.end('Preview mode enabled');
 };
+
+export default preview;
