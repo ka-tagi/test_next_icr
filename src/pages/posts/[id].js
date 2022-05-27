@@ -15,26 +15,45 @@ export async function getStaticPaths() {
 
   return {
     paths: postIds.map((post) => `/posts/${post.id}`) || [],
-    fallback: 'blocking',
+    fallback: true,
   }
 }
 
 // コンテンツデータ取得
-export async function getStaticProps({ params }) {
-  const post = await getArticle(params.id);
+export async function getStaticProps(context) {
+  // const isPreviewMode = preview && previewData?.post.slug;
+  const propsData = JSON.stringify(context);
+
+  const isPreviewMode = context.previewData;
+  console.log(isPreviewMode);
+
+  let post = {};
+  if (isPreviewMode) {
+    const draftKey = context.previewData?.draftKey || '';
+    const params = {
+      draftKey,
+    }
+    post = await getArticle(context.params.slug, params);
+
+  } else {
+    post = await getArticle(context.params.id);
+  }
+
   return {
     props: {
       post,
+      propsData,
     },
     revalidate: 10,
   };
 }
 
 // container ------------------------------------------
-const Article = ({post}) => {
+const Article = ({post, propsData}) => {
   return (
     <ArticleTemplate
       post={post}
+      console={propsData}
     />
   );
 };

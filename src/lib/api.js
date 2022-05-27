@@ -1,5 +1,5 @@
-const API_URL = process.env.API_URL;
-const API_KEY = process.env.API_KEY;
+export const API_URL = process.env.API_URL;
+export const API_KEY = process.env.API_KEY;
 
 /**
  * 一覧取得
@@ -27,7 +27,6 @@ export async function getList(params) {
   const URL = params ? `${API_URL}blogs/${id}?${paramStr}`
                      : `${API_URL}blogs/${id}`;
 
-  console.log(12, URL, params);
   const res = await fetch(URL, {
     headers: {
       'X-MICROCMS-API-KEY': API_KEY,
