@@ -1,7 +1,7 @@
 import { getArticle } from '@/lib/api.js';
 
 const exitPreview = async (req, res) => {
-  const id = toStringId(req.query.id);
+  const id = req.query.id;
   const params = {
     fields: 'id',
   }
