@@ -39,6 +39,7 @@ export async function getStaticProps(context) {
 
   const post = await getArticle(id, params);
   post.console = propsData;
+  post.isPreview = isPreviewMode;
 
   return {
     props: {
