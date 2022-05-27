@@ -1,12 +1,12 @@
-const ArticleTemplate = ({post, console, preview}) => {
+const ArticleTemplate = ({post}) => {
   return (
     <div>
-      {preview && <div>プレビューモード</div>}
+      {post.isPreview && <div>プレビューモード</div>}
       <h1>{post.title}</h1>
       <div
         dangerouslySetInnerHTML={{__html: post.content }}
       />
-      {console && <div>{console}</div>}
+      {post.console && <div>{post.console}</div>}
     </div>
   );
 }

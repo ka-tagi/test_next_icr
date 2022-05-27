@@ -38,29 +38,26 @@ export async function getStaticProps(context) {
   }
 
   const post = await getArticle(id, params);
-  console = propsData;
+  post.console = propsData;
+  post.isPreview = isPreviewMode;
 
   return {
     props: {
       post,
-      propsData,
-      isPreviewMode,
     },
     revalidate: 10,
   };
 }
 
 // container ------------------------------------------
-const Article = ({post, propsData, isPreviewMode}) => {
-  if (!post) {
+const Article = ({post}) => {
+  if (!post || !post.title) {
     return <div>ページデータがないよ</div>
   }
 
   return (
     <ArticleTemplate
       post={post}
-      console={propsData}
-      preview={isPreviewMode}
     />
   );
 };
