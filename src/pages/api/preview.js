@@ -10,10 +10,10 @@ export default async(req, res) => {
 
   const url = `${API_URL}blogs/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`;
 
-  const res = await fetch(url,
+  const previewRes = await fetch(url,
     { headers: { 'X-MICROCMS-API-KEY': API_KEY } }
   );
-  const content = res.json();
+  const content = previewRes.json();
 
   if (!content) {
     return res.status(401).json({ message: 'Invalid slug' });
