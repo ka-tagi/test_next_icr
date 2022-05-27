@@ -1,3 +1,7 @@
+// components ------------------------------------------
+import Link from 'next/link'
+
+// template --------------------------------------------
 const ArticleTemplate = ({post}) => {
   return (
     <div>
