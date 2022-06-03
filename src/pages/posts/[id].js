@@ -25,7 +25,7 @@ export async function getStaticProps(context) {
 
   console.log(`context: ${propsData}`);
   const isPreviewMode = (context.preview && context.previewData?.draftKey) || false;
-  console.log(`isPreviewMode: ${isPreviewMode}`);
+  // console.log(`isPreviewMode: ${isPreviewMode}`);
 
   const id = context.params.id;
   let params = null;

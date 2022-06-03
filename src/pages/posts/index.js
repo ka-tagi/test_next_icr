@@ -1,7 +1,8 @@
 import { getList } from '@/lib/api.js';
 
 // components ------------------------------------------
-import Link from 'next/link'
+import ArticleList from '@/components/oganisms/article-list/index';
+
 
 // contents ------------------------------------------
 // import { OG_IMAGE_URL, SITE_URL } from '~/constants/common';
@@ -19,15 +20,7 @@ export async function getStaticProps() {
 // container ------------------------------------------
 const ArticleIndex = ({posts}) => {
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>
-          <Link href={`posts/${post.id}`}>
-            {post.title}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <ArticleList posts={posts} />
   );
 };
 

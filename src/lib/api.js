@@ -18,6 +18,26 @@ export async function getList(params) {
   return data.contents;
 };
 
+/**
+ * 一覧取得
+ */
+ export async function getTotalCount() {
+  const param = {
+    fields: 'id',
+    limit: 1,
+  }
+  const paramStr = new URLSearchParams(param);
+  const URL = `${API_URL}blogs?${paramStr}`;
+
+  const res = await fetch(URL, {
+    headers: {
+      'X-MICROCMS-API-KEY': API_KEY,
+    },
+  });
+  const data = await res.json();
+  return data.totalCount;
+};
+
 
 /**
  * 個別記事取得
