@@ -1,6 +1,12 @@
 .pagination {
   display: flex;
-  list-style: none;
+
+  .paginationUl {
+    display: flex;
+    list-style: none;
+    padding: 0 2em;
+    margin: 0;
+  }
 
   li + li {
     margin-left: 5px;
@@ -14,6 +20,19 @@
 
   .isCurrent {
     padding: 0 0.2em;
-    color: inset;
+    color: unset;
+  }
+
+  .next,
+  .prev,
+  .next0,
+  .prev0 {
+    padding: 0 0.2em;
+  }
+
+  .next0 a,
+  .prev0 a {
+    pointer-events: none;
+    color: unset;
   }
 }
