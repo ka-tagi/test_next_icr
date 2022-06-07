@@ -1,7 +1,7 @@
 import { getList, getTotalCount } from '@/lib/api.js';
 
 // components ------------------------------------------
-import Pagination from '@/components/templates/pagination-templete';
+import PaginationTemplate from '@/components/templates/pagination-templete';
 
 // contents ------------------------------------------
 const pageLimit = 2;
@@ -32,7 +32,6 @@ export async function getStaticPaths() {
 
 // コンテンツデータ取得
 export async function getStaticProps({ params }) {
-  // console.log(params);
 
   // ページネーションデータ
   const paginations = await getPagenationList();
@@ -62,7 +61,7 @@ const PagePagination = ({posts, paginations}) => {
   }
 
   return (
-    <Pagination
+    <PaginationTemplate
       posts={posts}
       paginations={paginations}
     />

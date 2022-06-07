@@ -12,9 +12,14 @@ const Pagination = ({ pageList }) => {
     {paginationData.pages.map((page) => (
       <li key={page}>
         [
-        <Link href={`/posts/pages/${page}`}>
-          <a>{page}</a>
-        </Link>
+        {paginationData.isCurrent === page
+          ?
+          <span className={styles.isCurrent}>{paginationData.isCurrent}</span>
+          :
+          <Link href={`/posts/pages/${page}`}>
+            <a>{page}</a>
+          </Link>
+        }
         ]
       </li>
     ))}
