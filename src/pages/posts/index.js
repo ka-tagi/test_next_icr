@@ -1,26 +1,39 @@
-import { getList } from '@/lib/api.js';
+import { getList, getPagenationList, pageLimit } from '@/lib/api.js';
 
 // components ------------------------------------------
-import ArticleList from '@/components/oganisms/article-list/index';
-
+import PaginationTemplate from '@/components/templates/pagination-templete';
 
 // contents ------------------------------------------
 // import { OG_IMAGE_URL, SITE_URL } from '~/constants/common';
 
 export async function getStaticProps() {
-  const posts = await getList();
+  // 記事一覧
+  const param = {
+    limit: 3,
+    fields: 'id,title',
+  };
+  const posts = await getList(param);
+
+  // ページネーションデータ
+  const paginations = await getPagenationList();
   return {
     props: {
       posts,
+      paginations,
     },
     revalidate: 60,
   }
 }
 
 // container ------------------------------------------
-const ArticleIndex = ({posts}) => {
+const ArticleIndex = ({posts, paginations}) => {
   return (
-    <ArticleList posts={posts} />
+    <div>
+      <PaginationTemplate
+        posts={posts}
+        paginations={paginations}
+      />
+    </div>
   );
 };
 

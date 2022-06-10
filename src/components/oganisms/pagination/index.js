@@ -11,11 +11,19 @@ const Pagination = ({ pageList }) => {
   return (
     <nav className={styles.pagination}>
       <div className={styles.first}>
-        <Link href='/posts/pages/1'><a>&lt;&lt;</a></Link>
+        <Link href='/posts/'><a>&lt;&lt;</a></Link>
       </div>
-      <div className={ paginationData.isCurrent -1 > 0 ? styles.prev : styles.prev0 }>
-        <Link href={`/posts/pages/${paginationData.isCurrent - 1}`}><a>&lt;</a></Link>
-      </div>
+      {paginationData.isCurrent -1 > 0
+        ?
+        <div className={ styles.prev}>
+          <Link href={`/posts/pages/${paginationData.isCurrent - 1}`}><a>&lt;</a></Link>
+        </div>
+        :
+        <div className={styles.prev0 }>
+          <Link href={`/posts/`}><a>&lt;</a></Link>
+        </div>
+      }
+
 
       <ul className={styles.paginationUl}>
       {paginationData.pages.map((page) => (

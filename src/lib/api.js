@@ -19,7 +19,7 @@ export async function getList(params) {
 };
 
 /**
- * 一覧取得
+ * 総数取得
  */
  export async function getTotalCount() {
   const param = {
@@ -38,6 +38,20 @@ export async function getList(params) {
   return data.totalCount;
 };
 
+/**
+ * ページネーションの表示用リスト max なし
+ * @returns [number] // [1, 2, 3, 4]
+ */
+ export const pageLimit = 3;
+ export async function getPagenationList() {
+  const postsTotalCount = await getTotalCount();
+  const start = 1;
+  const end = Math.ceil(postsTotalCount / pageLimit);
+
+  const list = [...Array(end - start + 1)].map((_, i) => start + i);
+
+  return list;
+}
 
 /**
  * 個別記事取得

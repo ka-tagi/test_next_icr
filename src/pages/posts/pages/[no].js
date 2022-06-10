@@ -1,25 +1,9 @@
-import { getList, getTotalCount } from '@/lib/api.js';
+import { getList, getPagenationList, pageLimit } from '@/lib/api.js';
 
 // components ------------------------------------------
 import PaginationTemplate from '@/components/templates/pagination-templete';
 
 // contents ------------------------------------------
-const pageLimit = 2;
-
-/**
- * ページネーションの表示用リスト max なし
- * @returns [number] // [1, 2, 3, 4]
- */
-async function getPagenationList() {
-  const postsTotalCount = await getTotalCount();
-  const start = 1;
-  const end = Math.ceil(postsTotalCount / pageLimit);
-
-  const list = [...Array(end - start + 1)].map((_, i) => start + i);
-
-  return list;
-}
-
 // パスの生成
 export async function getStaticPaths() {
   const list = await getPagenationList();
