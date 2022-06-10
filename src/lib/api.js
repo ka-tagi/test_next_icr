@@ -1,3 +1,5 @@
+import { PAGE_LIMIT } from '@/data/global';
+
 export const API_URL = process.env.API_URL;
 export const API_KEY = process.env.API_KEY;
 
@@ -42,11 +44,10 @@ export async function getList(params) {
  * ページネーションの表示用リスト max なし
  * @returns [number] // [1, 2, 3, 4]
  */
- export const pageLimit = 3;
  export async function getPagenationList() {
   const postsTotalCount = await getTotalCount();
   const start = 1;
-  const end = Math.ceil(postsTotalCount / pageLimit);
+  const end = Math.ceil(postsTotalCount / PAGE_LIMIT);
 
   const list = [...Array(end - start + 1)].map((_, i) => start + i);
 

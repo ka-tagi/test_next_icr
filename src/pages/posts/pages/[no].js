@@ -1,4 +1,5 @@
-import { getList, getPagenationList, pageLimit } from '@/lib/api.js';
+import { PAGE_LIMIT } from '@/data/global';
+import { getList, getPagenationList } from '@/lib/api.js';
 
 // components ------------------------------------------
 import PaginationTemplate from '@/components/templates/pagination-templete';
@@ -22,8 +23,8 @@ export async function getStaticProps({ params }) {
 
   // 記事一覧
   const param = {
-    limit: pageLimit,
-    offset: (params.no - 1) * pageLimit,
+    limit: PAGE_LIMIT,
+    offset: (params.no - 1) * PAGE_LIMIT,
     fields: 'id,title',
   };
 

@@ -9,17 +9,19 @@ const Pagination = ({ pageList }) => {
   const lastPage = paginationData.pages[paginationData.pages.length - 1];
 
   return (
-    <nav className={styles.pagination}>
-      <div className={styles.first}>
+    <nav className={ styles.pagination }>
+      <div className={ styles.first }>
         <Link href='/posts/'><a>&lt;&lt;</a></Link>
       </div>
       {paginationData.isCurrent -1 > 0
         ?
         <div className={ styles.prev}>
-          <Link href={`/posts/pages/${paginationData.isCurrent - 1}`}><a>&lt;</a></Link>
+          <Link href={ paginationData.isCurrent === 2
+            ? `/posts/`: `/posts/pages/${paginationData.isCurrent - 1}`
+          }><a>&lt;</a></Link>
         </div>
         :
-        <div className={styles.prev0 }>
+        <div className={ styles.prev0 }>
           <Link href={`/posts/`}><a>&lt;</a></Link>
         </div>
       }
@@ -33,7 +35,7 @@ const Pagination = ({ pageList }) => {
             ?
             <span className={styles.isCurrent}>{paginationData.isCurrent}</span>
             :
-            <Link href={`/posts/pages/${page}`}>
+            <Link href={ page === 1 ? `/posts/` : `/posts/pages/${page}`}>
               <a>{page}</a>
             </Link>
           }

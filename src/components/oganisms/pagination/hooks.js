@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-// import { useMemo } from 'react';
 
 /**
  * ページネーションコンポーネント用のデータ編集・返却
