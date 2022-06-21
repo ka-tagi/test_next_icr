@@ -1,5 +1,10 @@
+import { NextPage, GetStaticProps } from 'next';
+
 import { PAGE_LIMIT } from '@/data/global';
-import { getList, getPagenationList } from '@/lib/api.js';
+import { getList, getPagenationList, TGetListParam } from '@/lib/api';
+
+import { TArticle } from '@/@types/article'
+import { TPaginationLinkList } from '@/@types/pagenation'
 
 // components ------------------------------------------
 import PaginationTemplate from '@/components/templates/pagination-templete';
@@ -7,32 +12,32 @@ import PaginationTemplate from '@/components/templates/pagination-templete';
 // contents ------------------------------------------
 // import { OG_IMAGE_URL, SITE_URL } from '~/constants/common';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   // 記事一覧
-  const param = {
+  const param: TGetListParam = {
     limit: PAGE_LIMIT,
     fields: 'id,title',
   };
-  const posts = await getList(param);
+  const posts: TArticle[] = await getList(param);
 
   // ページネーションデータ
-  const paginations = await getPagenationList();
+  const pagination: TPaginationLinkList = await getPagenationList();
   return {
     props: {
       posts,
-      paginations,
+      pagination,
     },
     revalidate: 60,
   }
 }
 
 // container ------------------------------------------
-const ArticleIndex = ({posts, paginations}) => {
+const ArticleIndex: NextPage<{posts: TArticle[], pagination: TPaginationLinkList}> = ({posts, pagination}) => {
   return (
     <div>
       <PaginationTemplate
         posts={posts}
-        paginations={paginations}
+        paginations={pagination}
       />
     </div>
   );

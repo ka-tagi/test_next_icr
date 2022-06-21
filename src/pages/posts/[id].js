@@ -1,4 +1,4 @@
-import { getList, getArticle } from '@/lib/api.js';
+import { getList, getArticle } from '@/lib/api.ts';
 
 // components ------------------------------------------
 import ArticleTemplate from '@/components/templates/article-template';

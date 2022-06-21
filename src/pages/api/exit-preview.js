@@ -1,4 +1,4 @@
-import { getArticle } from '@/lib/api.js';
+import { getArticle } from '@/lib/api.ts';
 
 const exitPreview = async (req, res) => {
   const id = req.query.id;

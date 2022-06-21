@@ -1,5 +1,5 @@
 import { PAGE_LIMIT } from '@/data/global';
-import { getList, getPagenationList } from '@/lib/api.js';
+import { getList, getPagenationList } from '@/lib/api.ts';
 
 // components ------------------------------------------
 import PaginationTemplate from '@/components/templates/pagination-templete';
