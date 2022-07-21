@@ -78,7 +78,8 @@ export async function getList(params: TGetListParam) {
  * 個別記事取得
  */
  export async function getArticle(id: string, params?: TGetArticleParam | null) {
-  const paramStr = params ? new URLSearchParams(params): '';
+  const paramStr = params ? new URLSearchParams({...params} as string) : '';
+
   const URL = params ? `${API_URL}blogs/${id}?${paramStr}`
                      : `${API_URL}blogs/${id}`;
 
