@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { usePagenation } from './hooks';
+import { TPaginationLinkList, TdisplayPagenation } from '@/@types/pagenation';
 
 import styles from './styles.module.scss';
 
 // template --------------------------------------------
-const Pagination = ({ pageList }) => {
-  const paginationData = usePagenation(pageList);
+const Pagination = ({ pageList }: { pageList: TPaginationLinkList }) => {
+  const paginationData: TdisplayPagenation = usePagenation(pageList);
   const lastPage = paginationData.pages[paginationData.pages.length - 1];
 
   return (

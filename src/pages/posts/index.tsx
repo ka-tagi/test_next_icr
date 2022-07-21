@@ -7,7 +7,7 @@ import { TArticle } from '@/@types/article';
 import { TPaginationLinkList } from '@/@types/pagenation';
 
 // components ------------------------------------------
-import PaginationTemplate from '@/components/templates/pagination-templete.js';
+import PaginationTemplate from '@/components/templates/pagination-templete';
 
 // contents ------------------------------------------
 type TProps = InferGetStaticPropsType<typeof getStaticProps>;

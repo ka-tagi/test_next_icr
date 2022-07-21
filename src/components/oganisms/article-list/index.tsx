@@ -1,8 +1,9 @@
 // components ------------------------------------------
 import Link from 'next/link';
+import { TArticle } from '@/@types/article';
 
 // template --------------------------------------------
-const ArticleList = ({posts}) => {
+const ArticleList = ({ posts }: { posts: TArticle[] }) => {
   return (
     <ul>
       {posts.map((post) => (
