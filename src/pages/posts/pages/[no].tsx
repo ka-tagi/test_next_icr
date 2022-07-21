@@ -1,12 +1,18 @@
+import { NextPage, GetStaticPaths, InferGetStaticPropsType, GetStaticPropsContext} from 'next';
 import { PAGE_LIMIT } from '@/data/global';
-import { getList, getPagenationList } from '@/lib/api.ts';
+import { getList, getPagenationList } from '@/lib/api';
+
+import { TArticle } from '@/@types/article';
+import { TPaginationLinkList } from '@/@types/pagenation';
 
 // components ------------------------------------------
 import PaginationTemplate from '@/components/templates/pagination-templete';
 
 // contents ------------------------------------------
+type TProps = InferGetStaticPropsType<typeof getStaticProps>;
+
 // パスの生成
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const list = await getPagenationList();
 
   return {
@@ -16,19 +22,20 @@ export async function getStaticPaths() {
 }
 
 // コンテンツデータ取得
-export async function getStaticProps({ params }) {
+export const getStaticProps = async (context: GetStaticPropsContext<{ no: string}>) => {
 
   // ページネーションデータ
-  const paginations = await getPagenationList();
+  const paginations: TPaginationLinkList = await getPagenationList();
 
   // 記事一覧
+  const no = +context.params!.no;
   const param = {
     limit: PAGE_LIMIT,
-    offset: (params.no - 1) * PAGE_LIMIT,
+    offset: (no - 1) * PAGE_LIMIT,
     fields: 'id,title',
   };
 
-  const posts= await getList(param);
+  const posts: TArticle[] = await getList(param);
 
   return {
     props: {
@@ -40,7 +47,7 @@ export async function getStaticProps({ params }) {
 }
 
 // container ------------------------------------------
-const PagePagination = ({posts, paginations}) => {
+const PagePagination:NextPage<TProps> = ({posts, paginations}) => {
   if (!posts && !paginations) {
     return <div>ページデータがないよ</div>
   }

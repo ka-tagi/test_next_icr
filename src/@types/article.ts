@@ -1,5 +1,6 @@
 export type TArticle = {
   id: string
+  content?: string
   createdAt?: string
   updatedAt?: string
   publishedAt?: string
@@ -24,4 +25,10 @@ export type TCategory = {
   publishedAt: string
   revisedAt: string
   name: string
+}
+
+// article template に渡される型
+export type TdisplayArticleData = TArticle & {
+  console?: string
+  isPreview: boolean
 }

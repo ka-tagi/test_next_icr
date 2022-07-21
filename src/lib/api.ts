@@ -17,6 +17,8 @@ export type TGetListParam = {
 
 export type TGetArticleParam = {
   status?: string
+  draftKey?: string
+  fields?: string
 }
 
 /**
@@ -75,8 +77,8 @@ export async function getList(params: TGetListParam) {
 /**
  * 個別記事取得
  */
- export async function getArticle(id: string, params?: TGetArticleParam) {
-  const paramStr = new URLSearchParams(params);
+ export async function getArticle(id: string, params?: TGetArticleParam | null) {
+  const paramStr = params ? new URLSearchParams(params): '';
   const URL = params ? `${API_URL}blogs/${id}?${paramStr}`
                      : `${API_URL}blogs/${id}`;
 
