@@ -12,18 +12,18 @@ const Pagination = ({ pageList }: { pageList: TPaginationLinkList }) => {
   return (
     <nav className={ styles.pagination }>
       <div className={ styles.first }>
-        <Link href='/posts/'><a>&lt;&lt;</a></Link>
+        <Link href='/posts/'>&lt;&lt;</Link>
       </div>
       {paginationData.isCurrent -1 > 0
         ?
         <div className={ styles.prev}>
           <Link href={ paginationData.isCurrent === 2
             ? `/posts/`: `/posts/pages/${paginationData.isCurrent - 1}`
-          }><a>&lt;</a></Link>
+          }>&lt;</Link>
         </div>
         :
         <div className={ styles.prev0 }>
-          <Link href={`/posts/`}><a>&lt;</a></Link>
+          <Link href={`/posts/`}>&lt;</Link>
         </div>
       }
 
@@ -37,7 +37,7 @@ const Pagination = ({ pageList }: { pageList: TPaginationLinkList }) => {
             <span className={styles.isCurrent}>{paginationData.isCurrent}</span>
             :
             <Link href={ page === 1 ? `/posts/` : `/posts/pages/${page}`}>
-              <a>{page}</a>
+              {page}
             </Link>
           }
           ]
@@ -46,10 +46,10 @@ const Pagination = ({ pageList }: { pageList: TPaginationLinkList }) => {
       </ul>
 
       <div className={paginationData.isCurrent < lastPage ? styles.next : styles.next0}>
-        <Link href={`/posts/pages/${paginationData.isCurrent + 1}`}><a>&gt;</a></Link>
+        <Link href={`/posts/pages/${paginationData.isCurrent + 1}`}>&gt;</Link>
       </div>
       <div className={styles.last}>
-        <Link href={`/posts/pages/${lastPage}`}><a>&gt;&gt;</a></Link>
+        <Link href={`/posts/pages/${lastPage}`}>&gt;&gt;</Link>
       </div>
     </nav>
   );

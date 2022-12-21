@@ -10,7 +10,7 @@ const ArticleTemplate = ({ post }: { post: TdisplayArticleData }) => {
         <div>
           プレビューモードで閲覧中。
           <Link href={`/api/exit-preview?id=${post.id}`}>
-            <a>プレビューを解除</a>
+            プレビューを解除
           </Link>
         </div>
       )}

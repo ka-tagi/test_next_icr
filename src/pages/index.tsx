@@ -9,7 +9,7 @@ const Home: NextPage = () => {
     <div>
       <h1>next.js 検証</h1>
       <Link href='/posts'>
-        <a>・記事一覧ページ</a>
+        ・記事一覧ページ
       </Link>
     </div>
   )
